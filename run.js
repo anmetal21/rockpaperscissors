@@ -4,66 +4,96 @@ function getComputerChoice() {
     let computerChoice=Math.floor(Math.random()*3)
 
 if (computerChoice==0){
-    return "rock";
+    return "ROCK";
 }
 else if (computerChoice==1) {
-    return "paper";
+    return "PAPER";
 }
 else {
-    return "scissors";
+    return "SCISSORS";
 }
 }
 
 
 
-function playRound (playerSelection, computerSelection) {
-   
-    
+function playRound(playerSelection, computerSelection) {
 
 if (playerSelection==computerSelection) {
-    return "Tie"
+    return `Tie, you both picked ${playerSelection}...`
 }
-    else if (playerSelection=="rock" && computerSelection=="paper"){
-    return "You lose! Paper beats Rock!"
+    else if (playerSelection=="ROCK" && computerSelection=="PAPER" ||
+             playerSelection=="PAPER" && computerSelection=="SCISSORS" ||
+             playerSelection=="SCISSORS" && computerSelection=="ROCK") {
+    return `You lose! ${computerSelection} beats ${playerSelection}!`
 }
-    else if (playerSelection=="paper" && computerSelection=="scissors"){
-    return "You lose! Scissors beats Paper!"
-}
-    else if (playerSelection=="scissors" && computerSelection=="rock"){
-    return "You lose! Rock beats Scissors!"
-}
-    else if (playerSelection=="rock" && computerSelection=="scissors"){
-    return "You Win! Rock beats Scissors"
-}
-    else if (playerSelection=="scissors" && computerSelection=="paper"){
-    return "You Win! Scissors beats Paper!"
-}
-    else if (playerSelection=="paper" && computerSelection=="rock") {
-    return "You Win! Paper beats Rock!"
+    else if (playerSelection=="ROCK" && computerSelection=="SCISSORS"||
+             playerSelection=="SCISSORS" && computerSelection=="PAPER" ||
+             playerSelection=="PAPER" && computerSelection=="ROCK"){
+    return `You Win! ${playerSelection} beats ${computerSelection}!`
 }
     else {
     return "You didn't pick an available choice"
 }
 }
 
-
 function caseInsensitive () {
-    if (playerInput==playerInput.toLowerCase()) {
+
+    let playerInput=prompt("Choose your weapon");
+
+    if (playerInput==playerInput.toUpperCase()) {
     return playerInput;
     }
     else {
-        return playerInput.toLowerCase();
+        return playerInput.toUpperCase();
     }
 }
-
 
 function game() {
-    for (let i=0, i<5, i++) {
+
+    alert("Let's play Rock, Paper, Scissors, Bo5 Rounds");
+
+    let humanWins=0;
+    let computerWins=0;
+
+    for (let i=0; i<5; i++) {
+
+        if (i<5) {
+            console.log("Round " +(i+1));
+            }
         
-    }
+        let playerSelection=caseInsensitive();
+        let computerSelection=getComputerChoice();
+        let xRound=playRound (playerSelection, computerSelection);
+
+        console.log(xRound);
+
+        if (xRound==`You lose! ${computerSelection} beats ${playerSelection}!`){
+            computerWins++
+        }
+        else if (xRound==`You Win! ${playerSelection} beats ${computerSelection}!`){
+            humanWins++;
+        }
+        
+        else {
+            humanWins=humanWins+0;
+            computerWins=computerWins+0;
+        }   
+
 }
 
-let playerInput=prompt("Choose your weapon");
-let playerSelection=caseInsensitive();
-let computerSelection=getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+    if (i=5 && computerWins>humanWins){
+    console.log(`Human Wins=${humanWins}, Computer Wins=${computerWins}, Computer Wins`);
+    }
+    else if (i=5 && humanWins>computerWins) {
+    console.log(`Human Wins=${humanWins}, Computer Wins=${computerWins}, Human Wins`);
+    }
+    else {
+    console.log(`Human Wins=${humanWins}, Computer Wins=${computerWins}, Tie game`);
+    }
+   
+
+}
+
+    
+
+game();
