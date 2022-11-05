@@ -1,0 +1,56 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    background-color:antiquewhite;
+    color: darkslateblue;
+    font-family: system-ui;
+}
+.buttons {
+    display: flex;
+    padding-top: 80px;
+    gap: 25px;
+   
+}
+
+button {
+    height: 70px;
+    width: 200px;
+    border-color: black;
+    border-radius: 50px;
+    color: darkslateblue;
+    background-color: lightgrey;
+    font-weight: bold;
+}
+
+.stats {
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.counter {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#result {
+    font-weight: bolder;
+}
+
+#humanWins {
+    margin-top: 30px;
+}
+
+button:hover {
+    transform: scale(1.25) perspective(1px)
+}
+
+h1 {
+    margin-top: 100px;
+    font-weight: bolder;
+}
